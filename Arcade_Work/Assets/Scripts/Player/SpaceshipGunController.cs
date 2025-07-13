@@ -9,13 +9,24 @@ enum ShootingType
 
 public class SpaceshipGunController : MonoBehaviour
 {
+    [Header("Shooting Params")]
     [SerializeField] SpaceshipGun[] guns;
     [SerializeField] KeyCode shootKey = KeyCode.Space;
     [SerializeField] ShootingType shootingType;
 
+    [SerializeField] GameObject[] projectiles; 
+
+    //[Header("Irany alapu loves")]
+    //[SerializeField] Vector2 leftDirection = new Vector2(-1, 1);
+    //[SerializeField] Vector2 rightDirection = new Vector2(1, 1);
+    //[SerializeField] int gunCount = 5;
+
+
+
+
     int count = 0;
     int direction = 1;
-    int pinPongIndex = 0;   
+    int pinPongIndex = 0;
 
     void OnValidate()
     {
@@ -42,7 +53,7 @@ public class SpaceshipGunController : MonoBehaviour
         {
             foreach (var gun in guns)
             {
-                gun.Shoot();
+                GunShoot(gun.transform.position, gun.transform.rotation);//gun.Shoot();
             }
         }
         if (shootingType == ShootingType.PinPong)
@@ -61,8 +72,17 @@ public class SpaceshipGunController : MonoBehaviour
                 pinPongIndex += direction;
             }
 
-            
+
         }
+        count++;
+    }
+    
+    public void GunShoot(Vector3 position, Quaternion rotation)
+    {
+        int randomBullet = Random.Range(0, 1);
+        GameObject p = projectiles[randomBullet];
+
+        Instantiate(p, position, rotation);
         count++;
     }
 }

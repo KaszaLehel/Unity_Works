@@ -742,6 +742,10 @@ MonoBehaviour:
   minWaitingTime: 0
   maxWaitingTime: 1
   projectile: {fileID: 5977110949517464441, guid: aa4466dfb1c960f459a8a7ceb9098427, type: 3}
+  shotsPerAttack: 3
+  timeBetweenShots: 0.3
+  segment: 32
+  gizmosColor: {r: 0.690566, g: 0.42494062, b: 0, a: 1}
 --- !u!114 &758800907
 MonoBehaviour:
   m_ObjectHideFlags: 0
